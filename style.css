@@ -5,82 +5,87 @@
   box-sizing: border-box;
 }
 
+/* ===== BASE ===== */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
   color: #3c1e20;
   background: #3c1e20;
+  line-height: 1.6;
   min-height: 100vh;
+  padding-top: 200px; /* Compensa header + menu fixos */
 }
 
-/* ===== NAV FIXO ===== */
-.menu {
+/* ===== HEADER FIXO ===== */
+.header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: #8d5e45;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
+  background: #e2ac74;
+  z-index: 1100;
   box-shadow: 0 2px 8px rgba(60,30,32,0.08);
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  margin-right: 1rem;
-  cursor: pointer;
-}
-
-.menu-links {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.menu a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-  font-size: 1.1rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-}
-
-.menu a:hover, .menu a:focus {
-  color: #e2ac74;
-  background: rgba(60,30,32,0.08);
-}
-
-.menu i {
-  font-size: 1.2rem;
-}
-
-/* ===== HEADER ===== */
-.header {
-  margin-top: 60px; /* espaço para nav fixa */
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #eabf99;
 }
 
 .header img {
   width: 100%;
-  max-width: 1200px;
   height: auto;
   display: block;
   border-radius: 0 0 20px 20px;
   box-shadow: 0 4px 16px rgba(60,30,32,0.10);
+}
+
+/* ===== MENU FIXO ABAIXO DO HEADER ===== */
+.menu {
+  position: fixed;
+  top: 140px; /* ajusta conforme a altura do banner */
+  left: 0;
+  width: 100%;
+  background: #e2ac74;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.menu-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* Botão de menu (hambúrguer) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: #3c1e20;
+  cursor: pointer;
+  margin-right: auto;
+}
+
+.menu a {
+  color: #3c1e20;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  font-size: 1.05rem;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+}
+
+.menu a:hover, .menu a:focus {
+  color: #eabf99;
+  background: rgba(255,255,255,0.08);
+}
+
+.menu i {
+  font-size: 1.2rem;
 }
 
 /* ===== GALERIA ===== */
@@ -113,7 +118,7 @@ body {
   box-shadow: 0 4px 16px rgba(60,30,32,0.18);
 }
 
-/* ===== SECTIONS ===== */
+/* ===== SEÇÕES ===== */
 .section {
   padding: 3rem 1rem;
   display: flex;
@@ -123,6 +128,7 @@ body {
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
+  scroll-margin-top: 180px; /* ajuste conforme a altura do seu menu */
 }
 
 .section .texto {
@@ -136,7 +142,7 @@ body {
   font-weight: 700;
 }
 
-.section p, 
+.section p,
 .section ul {
   margin-bottom: 1rem;
   font-size: 1.1rem;
@@ -155,41 +161,46 @@ body {
   object-fit: cover;
 }
 
-/* Alternância */
+/* ===== ALTERNÂNCIA DE CORES ===== */
 .sobre {
-  background: #eabf99;
+  background: #e2ac74;
   flex-direction: row-reverse;
   color: #3c1e20;
 }
 
 .consultorios {
   background: #3c1e20;
-  color: #fff;
+  color: #e2ac74;
+}
+
+.consultorios a{
+  color: #e2ac74;
+}
+
+.consultorios a:hover, .consultorios a:focus {
+  color: #eabf99;
+}
+
+.agende a{
+  color: #e2ac74;
+}
+
+.agende a:hover, .agende a:focus {
+  color: #eabf99;
 }
 
 .planos {
-  background: #eabf99;
+  background: #e2ac74;
   flex-direction: row-reverse;
   color: #3c1e20;
 }
 
 .agende {
   background: #3c1e20;
-  color: #fff;
+  color: #e2ac74;
 }
 
-/* ===== TEXTOS COLORIDOS ===== */
-.sobre h2,
-.planos h2 {
-  color: #3c1e20;
-}
-
-.consultorios h2,
-.agende h2 {
-  color: #fff;
-}
-
-/* Botão destaque */
+/* ===== BOTÃO ===== */
 .btn {
   display: inline-block;
   padding: 0.7rem 1.5rem;
@@ -199,87 +210,126 @@ body {
   text-decoration: none;
   border-radius: 8px;
   margin-top: 1rem;
-  transition: background 0.3s, color 0.3s;
-  font-size: 1.1rem;
+  transition: 0.3s;
   box-shadow: 0 2px 8px rgba(60,30,32,0.10);
 }
 
 .btn:hover, .btn:focus {
-  background: #8d5e45;
-  color: #fff;
+  background: #3c1e20;
+  color: #eabf99;
 }
 
-/* ===== FOOTER ===== */
 footer {
-  background: #eabf99;
+  background: #e2ac74;
   color: #3c1e20;
-  text-align: center;
-  padding: 1.5rem 1rem;
-  font-size: 1rem;
-  margin-top: 2rem;
+  padding: 3rem 2rem 1rem;
+  font-size: 0.9rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-footer a {
-  color: #2e1718;
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto 2rem auto;
+}
+
+.footer-container p {
+  color: #3c1e20;
+}
+
+.footer-column h3 {
+  color: #3c1e20;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.footer-column p {
+  margin: 0.3rem 0;
+  line-height: 1.5;
+}
+
+.footer-column a {
+  color: #3c1e20;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #eabf99;
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.social-icons a {
+  color: #3c1e20;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #eabf99;
+}
+
+.footer-bottom {
+  border-top: 1px solid #3c1e20;
+  text-align: center;
+  padding-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.footer-bottom a {
+  color: #3c1e20;
+  font-weight: bold;
   text-decoration: none;
 }
 
-footer a:hover, footer a:focus {
-  text-decoration: underline;
+.footer-bottom a:hover {
+  color: #eabf99;
 }
+
+/* Responsividade */
+@media (max-width: 600px) {
+  footer {
+    text-align: center;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
 
 /* ===== RESPONSIVIDADE ===== */
-@media (max-width: 1024px) {
-  .section {
-    gap: 1rem;
-    padding: 2rem 0.5rem;
-  }
-  .header img {
-    max-width: 100%;
-  }
-}
-
 @media (max-width: 768px) {
-  .header {
-    margin-top: 54px;
+  .menu-links {
+    flex-direction: column;
+    background: #3c1e20;
+    width: 100%;
+    padding: 1rem 0;
   }
+
   .section {
     flex-direction: column !important;
     text-align: center;
     gap: 1.5rem;
-    padding: 2rem 0.5rem;
   }
+
   .section img {
-    margin: 1rem auto;
-  }
-  .menu-links {
-    flex-direction: column;
-    gap: 0.8rem;
-    background: #8d5e45;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100vw;
-    padding: 1rem 0;
-    display: none;
-  }
-  .menu-links.open {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
-  .menu {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 480px) {
-  .header img {
-    border-radius: 0 0 10px 10px;
-  }
   .section h2 {
     font-size: 1.4rem;
   }
@@ -297,4 +347,47 @@ footer a:hover, footer a:focus {
 .menu a:focus, .btn:focus {
   outline: 2px solid #e2ac74;
   outline-offset: 2px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .menu {
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+  }
+
+  /* Exibe o botão hambúrguer */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Oculta os links inicialmente */
+  .menu-links {
+    flex-direction: column;
+    background: #e2ac74;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  /* Quando o menu é aberto */
+  .menu-links.open {
+    max-height: 300px; /* altura suficiente para todos os links */
+    opacity: 1;
+    margin-top: 0.5rem;
+  }
+
+  .menu a {
+    padding: 0.8rem;
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid rgba(60,30,32,0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .menu {
+    top: 52px; /* ou reduza até encostar no banner */
+  }
 }
